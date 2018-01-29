@@ -5,6 +5,9 @@ sys.path.append("..")
 
 from models.Person import Person
 
+print("start")
 p = Person()
-p.save(None, None, None, None,None, None)
-p.delete()
+# p.create( {username}, {password}, {full name}, {email} )
+p.create("david", "asdfjkl;", "OSTLER, David Randall", "david.ostler001@live.com")
+print("finished")
+

@@ -6,25 +6,35 @@ import pymysql
 class DBConnection:
     def __init__(self):
         print("DBConnection created!")
-        self.connection = pymysql.connect(
+        
+        try:
+            self.connection = pymysql.connect(
                         db='contact_list', 
                         user='root', 
                         passwd='asdfjkl;', 
                         unix_socket="/var/run/mysqld/mysqld.sock")
-
+        except:
+            raise Error("Could not connect to DB")
+            
     def executeSQL(self, sql):
         # attempt to execute the sql
-        print("DBConnection.executeSQL entered...")
-    
+        print("DBConnection.executeSQL entered...") 
+        print(sql)
+
+        result = None
         try:
             with self.connection.cursor() as cursor:
-                cursor.execute(sql)
-           
+                result = cursor.execute(sql)
+                print(result)
+            
             # connection is not autocommit by default
-            self.connection.commit() 
+            x = self.connection.commit() 
+            print(x)
+            print("committed")
+
+        except Exception as e:
+            print("SQL ERROR: ----")
+            print(e)
 
         except:
-            print("SQLERROR: Something broke in DBConnection.executeSQL().")
-        
-        finally:
-            self.connection.close()
+            print("DBConnection Default ExecuteSQL error...")

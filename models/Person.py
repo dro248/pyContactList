@@ -1,4 +1,4 @@
-from DBConnection import DBConnection
+from models.DBConnection import DBConnection
 
 class Person:
     def __init__(self):
@@ -16,15 +16,15 @@ class Person:
         
         else:
             print("inserting values")
-            sql = "INSERT INTO `person` (`name`, `username`, `password`, `address`, `email`, `photo_url`)\
-                     VALUES (%s, %s, %s, %s, %s, %s)" % (name, username, password, address, email, photoUrl) 
+            sql = "INSERT INTO `person` (`name`, `username`, `password`, `address`, `email`, `photo_url`) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')" % (name, username, password, address, email, photoUrl) 
             self.db.executeSQL(sql)
+
 
     def delete(self):
         # TODO:
         print("Person.delete()")
 
 
-p = Person()
-p.create("dro248", "asdfjkl;", "OSTLER, David", "david.ostler001@gmail.com", None, None)
+# p = Person()
+# p.create("dro248", "asdfjkl;", "OSTLER, David", "david.ostler001@gmail.com")
 
