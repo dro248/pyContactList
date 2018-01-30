@@ -8,6 +8,6 @@ from models.Person import Person
 print("start")
 p = Person()
 # p.create( {username}, {password}, {full name}, {email} )
-p.create("david", "asdfjkl;", "OSTLER, David Randall", "david.ostler001@live.com")
+p.create("hpotter", "magic123", "POTTER, Harry", "the.boy@lived.com")
 print("finished")
 
